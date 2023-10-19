@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="LibraryForMatrixs">
-      <HintPath>..\..\LibraryForMatrixs\bin\Debug\LibraryForMatrixs.dll</HintPath>
+      <HintPath>..\LibraryForMatrixs\bin\Debug\LibraryForMatrixs.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

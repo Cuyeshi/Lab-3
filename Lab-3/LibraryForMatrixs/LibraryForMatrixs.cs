@@ -5,9 +5,9 @@
     /// </summary>
     public class Matrixs
     {
-        private double[,] number = new double[1000, 1000];
+        public double[,] number = new double[1000, 1000];
 
-        private string[] name = new string[1000];
+        public string[] name = new string[1000];
 
         public int line, column;
 

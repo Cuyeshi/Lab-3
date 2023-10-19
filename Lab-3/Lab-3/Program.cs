@@ -7,11 +7,13 @@ namespace Matrix
     {
         static void Main(string[] args)
         {
-
-            Matrixs matrixA = new Matrixs(), matrixB = new Matrixs(), matrixC = new Matrixs(); // Создание переменных типа Matrixs.
+            // Создание переменных типа Matrixs.
+            Matrixs matrixA = new Matrixs();
+            Matrixs matrixB = new Matrixs(); 
+            Matrixs matrixC = new Matrixs(); 
             double negativeA = 0, negativeB = 0, negativeC = 0, number = 0;
 
-            bool isRun = true;  // Присваивание переменной IsRun значения true.
+            bool isRun = true;
 
             while (isRun) // Консольное меню.
             {
@@ -30,7 +32,8 @@ namespace Matrix
                 switch (Convert.ToInt32(Console.ReadLine()))
                 {
                     case 1:
-                        Program.InputMatrix(matrixA); // Метод создания матрицы из полученной информации.
+                        // Методы создания матриц.
+                        Program.InputMatrix(matrixA);
                         Program.InputMatrix(matrixB);
                         Program.InputMatrix(matrixC);
                         break;
@@ -189,7 +192,7 @@ namespace Matrix
             line = Program.ReadInt();
             Console.Write("\nВведите число столбцов матрицы: ");
             column = Program.ReadInt();
-            Console.Write("\nВведите значение для матрицы(запись по строке): ");
+            Console.Write("\nВведите элементы матрицы: ");
             values = Program.InputMatrix(line, column);
             Console.Write("\n---------------------------------------------------------------------------\n");
             A = new Matrixs();
@@ -201,19 +204,20 @@ namespace Matrix
         /// <param name="A"></param>
         public static void OutputMatrix(Matrixs A)
         {
-            int i = 0;
+            int i =0, j;
             Console.WriteLine("\n" + A[0] + ":\n");
             while (i < A.Line)
             {
-                int j = 0;
-                while (j < A.Column)
+                j = 0;
+                for (i = 0; i < A.Line; i++)
                 {
-                    Console.Write(String.Format("{0,4:0.0}", A[i, j]));
-                    Console.Write(" ");
-                    j++;
+                    for (j = 0; j < A.Column; j++)
+                    {
+                        Console.Write(String.Format("{0,4:0.0}", A[i, j]));
+                        Console.Write(" ");
+                    }
+                    Console.WriteLine("\n");
                 }
-                Console.WriteLine("\n");
-                i++;
             }
         }
         /// <summary>

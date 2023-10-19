@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8B4C8E3A-F73B-4082-A412-C5DD1A9E5ADD}</ProjectGuid>
+    <ProjectGuid>{0C9E0E28-563C-4FCD-A229-8A954BC20816}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Tests</RootNamespace>
@@ -40,7 +40,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="LibraryForMatrixs">
-      <HintPath>..\..\LibraryForMatrixs\bin\Debug\LibraryForMatrixs.dll</HintPath>
+      <HintPath>..\LibraryForMatrixs\bin\Debug\LibraryForMatrixs.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\Lab-3\packages\MSTest.TestFramework.2.2.10\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>

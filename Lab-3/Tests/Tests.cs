@@ -7,7 +7,7 @@ namespace TestForMatrixs
     public class Tests
     {
         /// <summary>
-        /// Метод сравнения матриц между собой.
+        /// ћетод сравнени¤ матриц между собой.
         /// </summary>
         /// <param name="A"></param>
         /// <param name="B"></param>
@@ -35,7 +35,7 @@ namespace TestForMatrixs
             return true;
         }
         /// <summary>
-        /// Тест, проверяющий сложение одноэлементных матриц.
+        /// “ест, провер¤ющий сложение одноэлементных матриц.
         /// </summary>
         [TestMethod]
         public void SingleElementMatrixsAddition()
@@ -61,7 +61,7 @@ namespace TestForMatrixs
             Assert.IsTrue(CompareMatrixs(result, matrix3));
         }
         /// <summary>
-        /// Тест, проверюющий сложение квадратных матриц. 
+        /// “ест, провер¤ющий сложение квадратных матриц. 
         /// </summary>
         [TestMethod]
         public void AdditionSquareMatrixs()
@@ -87,7 +87,7 @@ namespace TestForMatrixs
             Assert.IsTrue(CompareMatrixs(result, matrix3));
         }
         /// <summary>
-        /// Тест, проверюющий возможность сложени¤ матриц.
+        /// “ест, провер¤ющий возможность сложени¤ матриц.
         /// </summary>
         [TestMethod]
         public void MatrixAdditionCheck()
@@ -109,7 +109,7 @@ namespace TestForMatrixs
             Assert.IsTrue(CompareMatrixs(result, matrix3));
         }
         /// <summary>
-        /// Тест, проверюющий наличие в матрице ненулевых элементов.
+        /// “ест, провер¤ющий наличие в матрице ненулевых элементов.
         /// </summary>
         [TestMethod]
         public void MatrixWithNoZeroElements()
@@ -126,7 +126,7 @@ namespace TestForMatrixs
             Assert.IsTrue(noZero);
         }
         /// <summary>
-        /// Тест, проверюющий матрицу на все нулевые значени¤.
+        /// “ест, провер¤ющий матрицу на все нулевые значени¤.
         /// </summary>
         [TestMethod]
         public void MatrixWithZeroElements()
@@ -144,7 +144,7 @@ namespace TestForMatrixs
             Assert.IsTrue(zero);
         }
         /// <summary>
-        /// Тест, проверюющий произвденеие отрицательных элементов матрицы(без вывода);.
+        /// “ест, провер¤ющий произвденеие отрицательных элементов матрицы(без вывода);.
         /// </summary>
         [TestMethod]
         public void MultiplicationNegativeElenentsOfMatrixWithOutOutput()
@@ -161,7 +161,7 @@ namespace TestForMatrixs
             Assert.AreEqual(result, negative);
         }
         /// <summary>
-        /// Тест, проверюющий произвденеие отрицательных элементов матрицы(с выводом).
+        /// “ест, провер¤ющий произвденеие отрицательных элементов матрицы(с выводом).
         /// </summary>
         [TestMethod]
         public void MultiplicationNegativeElenentsOfMatrixWithOutput()
@@ -179,7 +179,7 @@ namespace TestForMatrixs
             Assert.AreEqual(result, negative);
         }
         /// <summary>
-        /// Тест, проверюющий произведение отрицательных элементов матрицы, у которой все элементы положительны или ноль.
+        /// “ест, провер¤ющий произведение отрицательных элементов матрицы, у которой все элементы положительны или ноль.
         /// </summary>
         [TestMethod]
         public void MultiplicationNegativeElementsMatrix()
