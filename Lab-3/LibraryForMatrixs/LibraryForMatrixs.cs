@@ -5,12 +5,18 @@
     /// </summary>
     public class Matrixs
     {
-        public double[,] number = new double[1000, 1000]; // Должен быть private
+        private int[,] number = new int[1000, 1000];
 
-        public string[] name = new string[1000]; // Должен быть private
+        private string[] name = new string[1000]; 
 
+        /// <summary>
+        /// Переменные для хранения информации о количестве строк и столбцов. 
+        /// </summary>
         public int line, column;
 
+        /// <summary>
+        /// Свойство количества строк. 
+        /// </summary>
         public int Line
         {
             get 
@@ -23,6 +29,9 @@
             }
         }
 
+        /// <summary>
+        /// Свойство количества столбцов. 
+        /// </summary>
         public int Column
         {
             get 
@@ -35,12 +44,18 @@
             }
         }
 
-        public double this[int i, int j]
+        /// <summary>
+        /// Индексатор для доступа к значению элементов матрицы. 
+        /// </summary>
+        public int this[int i, int j]
         {
             get => number[i, j];
             set => number[i, j] = value;
         }
 
+        /// <summary>
+        /// Индексатор для доступа к имени матрицы. 
+        /// </summary>
         public string this[int i]
         {
             get => name[0];
@@ -64,7 +79,8 @@
         /// <param name="line"></param>
         /// <param name="column"></param>
         /// <param name="values"></param>
-        public Matrixs(int line, int column, double[,] values, string name)
+        /// <param name="name"></param>
+        public Matrixs(int line, int column, int[,] values, string name)
         {
             this.Line = line;
             this.Column = column;
@@ -141,7 +157,6 @@
         /// <summary>
         /// Операция true для матрицы.
         /// </summary>
-        /// <param name="number"></param>
         /// <param name="A"></param>
         /// <returns></returns>
         public static bool operator true(Matrixs A)
@@ -164,10 +179,10 @@
         /// </summary>
         /// <param name="A"></param>
         /// <returns></returns>
-        public static double MultiplyNegativeElements(Matrixs A)
+        public static int MultiplyNegativeElements(Matrixs A)
         {
             int stepLine = 0, sizeArray = 0;
-            double[] negative = new double[1000];
+            int[] negative = new int[1000];
             while (stepLine < A.Line)
             {
                 int stepColumn = 0;
@@ -185,7 +200,7 @@
             if (sizeArray != 0)
             {
                 int i = 0;
-                double number = 1;
+                int number = 1;
                 while (i < sizeArray)
                 {
                     number = number * negative[i];
@@ -195,7 +210,7 @@
             }
             else
             {
-                double number = 0;
+                int number = 0;
                 return number;
             }
 
@@ -207,10 +222,10 @@
         /// <param name="A"></param>
         /// <param name="number"></param>
         /// <returns></returns>
-        public static double MultiplyNegativeElements(Matrixs A, double number)
+        public static int MultiplyNegativeElements(Matrixs A, int number)
         {
             int stepLine = 0, sizeArray = 0;
-            double[] negative = new double[1000];
+            int[] negative = new int[1000];
             while (stepLine < A.Line)
             {
                 int stepColumn = 0;
@@ -225,6 +240,7 @@
                 }
                 stepLine++;
             }
+
             if (sizeArray != 0)
             {
                 int i = 0;
@@ -242,7 +258,11 @@
                 return number;
             }
         }
-        public static string ToString(double number, string name)
+
+        /// <summary>
+        /// Метод создания строки с записью произведения отрицательных элементов. 
+        /// </summary>
+        public static string ToString(int number, string name)
         {
             string res = number + " - " + name + "\n";
             return res;

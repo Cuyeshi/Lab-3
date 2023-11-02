@@ -3,6 +3,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace TestForMatrixs
 {
+    /// <summary>
+    /// Тестовый класс, в котором хранятся модульные тесты.
+    /// </summary>
     [TestClass]
     public class Tests
     {
@@ -34,6 +37,7 @@ namespace TestForMatrixs
             }
             return true;
         }
+
         /// <summary>
         /// Тест, проверяющий сложение одноэлементных матриц.
         /// </summary>
@@ -60,6 +64,7 @@ namespace TestForMatrixs
 
             Assert.IsTrue(CompareMatrixs(result, matrix3));
         }
+
         /// <summary>
         /// Тест, проверяющий сложение квадратных матриц. 
         /// </summary>
@@ -86,6 +91,7 @@ namespace TestForMatrixs
 
             Assert.IsTrue(CompareMatrixs(result, matrix3));
         }
+
         /// <summary>
         /// Тест, проверяющий возможность сложени¤ матриц.
         /// </summary>
@@ -108,6 +114,7 @@ namespace TestForMatrixs
 
             Assert.IsTrue(CompareMatrixs(result, matrix3));
         }
+
         /// <summary>
         /// Тест, проверяющий наличие в матрице ненулевых элементов.
         /// </summary>
@@ -125,6 +132,7 @@ namespace TestForMatrixs
             }
             Assert.IsTrue(noZero);
         }
+
         /// <summary>
         /// Тест, проверяющий матрицу на все нулевые значени¤.
         /// </summary>
@@ -143,6 +151,7 @@ namespace TestForMatrixs
 
             Assert.IsTrue(zero);
         }
+
         /// <summary>
         /// Тест, проверяющий произвденеие отрицательных элементов матрицы(без вывода);.
         /// </summary>
@@ -152,14 +161,15 @@ namespace TestForMatrixs
             Matrixs matrix1 = new Matrixs();
             matrix1.Line = 2;
             matrix1.Column = 2;
-            matrix1[0, 0] = -2; matrix1[0, 1] = -5; matrix1[1, 0] = -3; matrix1[1, 1] = -1.1;
+            matrix1[0, 0] = -2; matrix1[0, 1] = -5; matrix1[1, 0] = -3; matrix1[1, 1] = -1;
 
-            double negative = 33;
+            double negative = 30;
 
             double result = Matrixs.MultiplyNegativeElements(matrix1);
 
             Assert.AreEqual(result, negative);
         }
+
         /// <summary>
         /// Тест, проверяющий произвденеие отрицательных элементов матрицы(с выводом).
         /// </summary>
@@ -173,11 +183,12 @@ namespace TestForMatrixs
 
             double negative = -25;
 
-            double result = 0;
+            int result = 0;
             result = Matrixs.MultiplyNegativeElements(matrix1, result);
 
             Assert.AreEqual(result, negative);
         }
+
         /// <summary>
         /// Тест, проверяющий произведение отрицательных элементов матрицы, у которой все элементы положительны или ноль.
         /// </summary>

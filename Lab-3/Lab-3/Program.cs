@@ -11,7 +11,7 @@ namespace Matrix
             Matrixs matrixA = new Matrixs();
             Matrixs matrixB = new Matrixs(); 
             Matrixs matrixC = new Matrixs(); 
-            double negativeA = 0, negativeB = 0, negativeC = 0, number = 0;
+            int negativeA = 0, negativeB = 0, negativeC = 0, number = 0;
 
             bool isRun = true;
 
@@ -28,7 +28,7 @@ namespace Matrix
                 Console.WriteLine("║     5 - Выполнение особого задания;    ║");
                 Console.WriteLine("║         0 - Выход из программы;        ║");
                 Console.WriteLine("╚════════════════════════════════════════╝\n");
-                switch (Program.ReadInt())
+                switch (ReadInt())
                 {
                     case 1:
                         // Методы создания матриц.
@@ -47,7 +47,7 @@ namespace Matrix
                         break;
 
                     case 3:
-                        // Операция произведения отрицательных элементов матриц (с выводом).
+                        // Операция произведения отрицательных элементов матриц.
                         negativeA = Matrixs.MultiplyNegativeElements(matrixA, negativeA);
                         Console.WriteLine(Matrixs.ToString(negativeA, matrixA[0]));
                         negativeB = Matrixs.MultiplyNegativeElements(matrixB, negativeB);
@@ -59,50 +59,25 @@ namespace Matrix
                     case 4:
                         // Сумма Матриц.
                         Matrixs D = new Matrixs();
-                        D = matrixA + matrixB; // Операция сложения матриц.
-                        D = D + matrixC;
+                        D = matrixA + matrixB + matrixC; // Операция сложения матриц.
                         if (D.Line != 0)
                         {
                             OutputMatrix(D);
                         }
                         else
                         {
-                            D = matrixA + matrixB;
-                            if (D.Line != 0)
-                            {
-                                OutputMatrix(D);
-                            }
-                            else
-                            {
-                                D = matrixA + matrixC;
-                                if (D.Line != 0)
-                                {
-                                    OutputMatrix(D);
-                                }
-                                else
-                                {
-                                    D = matrixB + matrixC;
-                                    if (D.Line != 0)
-                                    {
-                                        OutputMatrix(D);
-                                    }
-                                    else
-                                    {
-                                        Console.WriteLine("Матрицы нельзя сложить.");
-                                    }
-                                }
-                            }
+                            Console.WriteLine("Матрицы нельзя сложить.");
                         }
                         break;
 
                     case 5:
                         Console.Write("\nВведите число, выше которого должно быть произведение для выполнения особого задания: ");
-                        number = ReadDouble();
+                        number = ReadInt();
                         if (Matrixs.MultiplyNegativeElements(matrixA) > number)
                         {
                             if (matrixC) // Проверка на наличие ненулевых элементов внутри матрицы
                             {
-                                double min = matrixC[matrixC.Line - 1, 0];
+                                int min = matrixC[matrixC.Line - 1, 0];
                                 int j = 1;
                                 while (j < matrixC.Column)
                                 {
@@ -112,22 +87,23 @@ namespace Matrix
                                     }
                                     j++;
                                 }
+
                                 int i = 0;
-                                while (i < matrixC.Line)
+                                while (i < matrixA.Line)
                                 {
                                     j = 0;
-                                    while (j < matrixC.Column)
+                                    while (j < matrixA.Column)
                                     {
-                                        if (matrixC[i, j] < 0)
+                                        if (matrixA[i, j] < 0)
                                         {
-                                            matrixC[i, j] = matrixC[i, j] + min;
+                                            matrixA[i, j] = matrixA[i, j] + min;
                                         }
                                         j++;
                                     }
                                     i++;
                                 }
-                                Console.WriteLine("\nЗадача выполнилась!\n");
-                                OutputMatrix(matrixC);
+                                Console.WriteLine("\nЗадача выполнена!\n");
+                                OutputMatrix(matrixA);
                             }
                             else
                             {
@@ -157,16 +133,16 @@ namespace Matrix
         /// <param name="line"></param>
         /// <param name="column"></param>
         /// <returns></returns>
-        private static double[,] InputMatrix(int line, int column)
+        private static int[,] InputMatrix(int line, int column)
         {
             int i = 0;
-            double[,] value = new double[1000, 1000];
+            int[,] value = new int[1000, 1000];
             while (i < line)
             {
                 int j = 0;
                 while (j < column)
                 {
-                    value[i, j] = ReadDouble();
+                    value[i, j] = ReadInt();
                     j++;
                 }
                 i++;
@@ -180,7 +156,7 @@ namespace Matrix
         private static Matrixs InputMatrix()
         {
             int line, column; // Переменные для обозначения строчек и столбцов матриц.
-            double[,] values = new double[1000, 1000]; // Создание двумерного массива для обозначения элементов матриц.
+            int[,] values = new int[1000, 1000]; // Создание двумерного массива для обозначения элементов матриц.
             string name; // Создание переменной для обозначения имени матрицы.
             Console.Write("\nВведите имя матрицы: ");
             name = Console.ReadLine();
@@ -216,22 +192,6 @@ namespace Matrix
                     Console.WriteLine("\n");
                 }
             }
-        }
-
-        /// <summary>
-        /// Метод для проверки вводимого значения для вещественного числа.
-        /// </summary>
-        /// <returns></returns>
-        private static double ReadDouble()
-        {
-            string numeral = Console.ReadLine();
-            double value;
-            while (!Double.TryParse(numeral, out value))
-            {
-                Console.WriteLine("Вводный данные не подходят. Введите корректное значение: ");
-                numeral = Console.ReadLine();
-            }
-            return value;
         }
 
         /// <summary>
