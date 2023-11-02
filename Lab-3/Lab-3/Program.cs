@@ -15,47 +15,40 @@ namespace Matrix
 
             bool isRun = true;
 
-            while (isRun) // Консольное меню.
+            // Консольное меню.
+            while (isRun) 
             {
                 Console.WriteLine("\n          Выберите действие:");
-                Console.WriteLine(" ----------------------------------------");
-                Console.WriteLine("|           1 - Ввод 3 Матриц;           |");
-                Console.WriteLine("|           2 - Вывод 3 Матриц;          |");
-                Console.WriteLine("|     3 - Произведение отрицательных     |");
-                Console.WriteLine("|      элементов Матриц без вывода;      |");
-                Console.WriteLine("|     4 - Произведение отрицательных     |");
-                Console.WriteLine("|       элементов Матриц с выводом;      |");
-                Console.WriteLine("|       5 - Сумма Матриц A, B и С;       |");
-                Console.WriteLine("|     6 - Выполнение особого задания;    |");
-                Console.WriteLine("|         0 - Выход из программы;        |");
-                Console.WriteLine(" ----------------------------------------\n");
-                switch (Convert.ToInt32(Console.ReadLine()))
+                Console.WriteLine("╔════════════════════════════════════════╗");
+                Console.WriteLine("║             1 - Ввод Матриц;           ║");
+                Console.WriteLine("║          2 - Вывод 3-ёх Матриц;        ║");
+                Console.WriteLine("║     3 - Произведение отрицательных     ║");
+                Console.WriteLine("║              элементов Матриц;         ║");
+                Console.WriteLine("║       4 - Сумма Матриц A, B и С;       ║");
+                Console.WriteLine("║     5 - Выполнение особого задания;    ║");
+                Console.WriteLine("║         0 - Выход из программы;        ║");
+                Console.WriteLine("╚════════════════════════════════════════╝\n");
+                switch (Program.ReadInt())
                 {
                     case 1:
                         // Методы создания матриц.
-                        Program.InputMatrix(matrixA);
-                        Program.InputMatrix(matrixB);
-                        Program.InputMatrix(matrixC);
+                        matrixA = InputMatrix();
+                        matrixB = InputMatrix();
+                        matrixC = InputMatrix();
                         break;
 
                     case 2:
                         Console.WriteLine("\n");
-                        Program.OutputMatrix(matrixA); // Метод вывода матрицы.
+                        OutputMatrix(matrixA); // Метод вывода матрицы А.
                         Console.WriteLine("\n");
-                        Program.OutputMatrix(matrixB);
+                        OutputMatrix(matrixB); // Метод вывода матрицы B.
                         Console.WriteLine("\n");
-                        Program.OutputMatrix(matrixC);
+                        OutputMatrix(matrixC); // Метод вывода матрицы C.
                         break;
 
                     case 3:
-                        negativeA = Matrixs.MultiplyNegativeElements(matrixA); // Метод произведения отрицательных элементов матриц(без вывода).
-                        negativeB = Matrixs.MultiplyNegativeElements(matrixB);
-                        negativeC = Matrixs.MultiplyNegativeElements(matrixC);
-                        Console.WriteLine("Произведения посчитаны.");
-                        break;
-
-                    case 4:
-                        negativeA = Matrixs.MultiplyNegativeElements(matrixA, negativeA); // Операция произведения отрицательных элементов матриц(с выводом).
+                        // Операция произведения отрицательных элементов матриц (с выводом).
+                        negativeA = Matrixs.MultiplyNegativeElements(matrixA, negativeA);
                         Console.WriteLine(Matrixs.ToString(negativeA, matrixA[0]));
                         negativeB = Matrixs.MultiplyNegativeElements(matrixB, negativeB);
                         Console.WriteLine(Matrixs.ToString(negativeB, matrixB[0]));
@@ -63,34 +56,35 @@ namespace Matrix
                         Console.WriteLine(Matrixs.ToString(negativeC, matrixC[0]));
                         break;
 
-                    case 5:
+                    case 4:
+                        // Сумма Матриц.
                         Matrixs D = new Matrixs();
                         D = matrixA + matrixB; // Операция сложения матриц.
                         D = D + matrixC;
                         if (D.Line != 0)
                         {
-                            Program.OutputMatrix(D);
+                            OutputMatrix(D);
                         }
                         else
                         {
                             D = matrixA + matrixB;
                             if (D.Line != 0)
                             {
-                                Program.OutputMatrix(D);
+                                OutputMatrix(D);
                             }
                             else
                             {
                                 D = matrixA + matrixC;
                                 if (D.Line != 0)
                                 {
-                                    Program.OutputMatrix(D);
+                                    OutputMatrix(D);
                                 }
                                 else
                                 {
                                     D = matrixB + matrixC;
                                     if (D.Line != 0)
                                     {
-                                        Program.OutputMatrix(D);
+                                        OutputMatrix(D);
                                     }
                                     else
                                     {
@@ -101,9 +95,9 @@ namespace Matrix
                         }
                         break;
 
-                    case 6:
+                    case 5:
                         Console.Write("\nВведите число, выше которого должно быть произведение для выполнения особого задания: ");
-                        number = Program.ReadDouble();
+                        number = ReadDouble();
                         if (Matrixs.MultiplyNegativeElements(matrixA) > number)
                         {
                             if (matrixC) // Проверка на наличие ненулевых элементов внутри матрицы
@@ -133,7 +127,7 @@ namespace Matrix
                                     i++;
                                 }
                                 Console.WriteLine("\nЗадача выполнилась!\n");
-                                Program.OutputMatrix(matrixC);
+                                OutputMatrix(matrixC);
                             }
                             else
                             {
@@ -156,13 +150,14 @@ namespace Matrix
                 }
             }
         }
+
         /// <summary>
         /// Метод ввода двумерного массива из консоли.
         /// </summary>
         /// <param name="line"></param>
         /// <param name="column"></param>
         /// <returns></returns>
-        public static double[,] InputMatrix(int line, int column)
+        private static double[,] InputMatrix(int line, int column)
         {
             int i = 0;
             double[,] value = new double[1000, 1000];
@@ -171,38 +166,40 @@ namespace Matrix
                 int j = 0;
                 while (j < column)
                 {
-                    value[i, j] = Program.ReadDouble();
+                    value[i, j] = ReadDouble();
                     j++;
                 }
                 i++;
             }
             return value;
         }
+
         /// <summary>
         /// Метод создания матрица из консоли.
         /// </summary>
-        public static void InputMatrix(Matrixs A)
+        private static Matrixs InputMatrix()
         {
-            int line, column; // Создание переменных для обозначения строчек и столбцов матриц.
-            double[,] values = new double[1000, 1000]; // Создание двумерных массивов для обозначения элементов матриц.
+            int line, column; // Переменные для обозначения строчек и столбцов матриц.
+            double[,] values = new double[1000, 1000]; // Создание двумерного массива для обозначения элементов матриц.
             string name; // Создание переменной для обозначения имени матрицы.
             Console.Write("\nВведите имя матрицы: ");
             name = Console.ReadLine();
             Console.Write("\nВведите число строк для матрицы: ");
-            line = Program.ReadInt();
+            line = ReadInt();
             Console.Write("\nВведите число столбцов матрицы: ");
-            column = Program.ReadInt();
+            column = ReadInt();
             Console.Write("\nВведите элементы матрицы: ");
-            values = Program.InputMatrix(line, column);
-            Console.Write("\n---------------------------------------------------------------------------\n");
-            A = new Matrixs();
-            A = new Matrixs(line, column, values, name);
+            values = InputMatrix(line, column);
+            Console.WriteLine("\n---------ВВОД ДАННЫХ ЗАКОНЧЕН--------\n");
+
+            return new Matrixs(line, column, values, name);
         }
+
         /// <summary>
         /// Метод вывода матрицы в консоль.
         /// </summary>
         /// <param name="A"></param>
-        public static void OutputMatrix(Matrixs A)
+        private static void OutputMatrix(Matrixs A)
         {
             int i =0, j;
             Console.WriteLine("\n" + A[0] + ":\n");
@@ -220,11 +217,12 @@ namespace Matrix
                 }
             }
         }
+
         /// <summary>
         /// Метод для проверки вводимого значения для вещественного числа.
         /// </summary>
         /// <returns></returns>
-        public static double ReadDouble()
+        private static double ReadDouble()
         {
             string numeral = Console.ReadLine();
             double value;
@@ -235,11 +233,12 @@ namespace Matrix
             }
             return value;
         }
+
         /// <summary>
         /// Метод для проверки вводимого значения для целочисленного числа.
         /// </summary>
         /// <returns></returns>
-        public static int ReadInt()
+        private static int ReadInt()
         {
             string numeral = Console.ReadLine();
             int value;

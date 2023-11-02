@@ -5,22 +5,30 @@
     /// </summary>
     public class Matrixs
     {
-        public double[,] number = new double[1000, 1000];
+        public double[,] number = new double[1000, 1000]; // Должен быть private
 
-        public string[] name = new string[1000];
+        public string[] name = new string[1000]; // Должен быть private
 
         public int line, column;
 
         public int Line
         {
-            get { return line; }
+            get 
+            { 
+                return line; 
+            }
             set
-            { line = value; }
+            { 
+                line = value; 
+            }
         }
 
         public int Column
         {
-            get { return column; }
+            get 
+            { 
+                return column; 
+            }
             set
             {
                 column = value;
@@ -38,6 +46,7 @@
             get => name[0];
             set => name[0] = value;
         }
+
         /// <summary>
         /// Конструктор пустой матрицы.
         /// </summary>
@@ -48,6 +57,7 @@
             this[Line, Column] = 0;
             this[0] = "";
         }
+
         /// <summary>
         /// Конструктор матрицы по вводимым данным.
         /// </summary>
@@ -59,7 +69,7 @@
             this.Line = line;
             this.Column = column;
             this[0] = name;
-            int stepLine = 0, stepColumn = 0;
+            int stepLine = 0, stepColumn;
             while (stepLine < line)
             {
                 stepColumn = 0;
@@ -71,6 +81,7 @@
                 stepLine++;
             }
         }
+
         /// <summary>
         /// Операция сложения матрицы на матрицу.
         /// </summary>
@@ -101,6 +112,7 @@
             Matrixs D = new Matrixs();
             return D;
         }
+
         /// <summary>
         /// Переменная для определения ненулевого элемента внутри матрицы.
         /// </summary>
@@ -109,10 +121,10 @@
             get
             {
                 int stepLine = 0, stepColumn = 0;
-                while (stepLine < this.Line)
+                while (stepLine < Line)
                 {
                     stepColumn = 0;
-                    while (stepColumn < this.Column)
+                    while (stepColumn < Column)
                     {
                         if (this[stepLine, stepColumn] != 0)
                         {
@@ -125,6 +137,7 @@
                 return false;
             }
         }
+
         /// <summary>
         /// Операция true для матрицы.
         /// </summary>
@@ -135,6 +148,7 @@
         {
             return A.HaveNozero;
         }
+
         /// <summary>
         /// Операция false для матрицы.
         /// </summary>
@@ -144,6 +158,7 @@
         {
             return !A.HaveNozero;
         }
+
         /// <summary>
         /// Метод для нахождения произведения отрицательных элементов матрицы без вывода результата.
         /// </summary>
@@ -185,6 +200,7 @@
             }
 
         }
+
         /// <summary>
         /// Метод для нахождения произведения отрицательных элементов матрицы с выводом результата
         /// </summary>
